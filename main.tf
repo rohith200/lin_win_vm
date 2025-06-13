@@ -66,7 +66,7 @@ resource "azurerm_linux_virtual_machine" "linux_vm" {
 resource "azurerm_managed_disk" "linux_data_disk" {
   name                 = "linuxdatadisk"
   location             = var.location
-  resource_group_name  = var.resource_group_name
+  resource_group_name  = azurerm_resource_group.main.name
   storage_account_type = "Standard_LRS"
   create_option        = "Empty"
   disk_size_gb         = 10
@@ -125,7 +125,7 @@ resource "azurerm_windows_virtual_machine" "windows_vm" {
 resource "azurerm_managed_disk" "windows_data_disk" {
   name                 = "windowsdatadisk"
   location             = var.location
-  resource_group_name  = var.resource_group_name
+  resource_group_name  = azurerm_resource_group.main.name
   storage_account_type = "Standard_LRS"
   create_option        = "Empty"
   disk_size_gb         = 10
